@@ -29,6 +29,7 @@ app.listen(port, () => {
 
 async function runCypressTest(url) {
     const results = await cypress.run({
+        headless: true,
         config: {
             env: {
                 URL_TO_TEST: url,
