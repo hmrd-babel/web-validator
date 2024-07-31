@@ -4,9 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "postinstall": "npx cypress install --cache-folder ./cypress_cache",
     "start": "node server.js",
-    "test": "npx cypress run"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",

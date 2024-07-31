@@ -2,8 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cypress = require('cypress');
+const { exec } = require('child_process');
+
 const app = express();
 const port = process.env.PORT || 3000;
+
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -35,6 +38,18 @@ async function runCypressTest(url) {
         totalPassed: results.totalPassed,
         totalFailed: results.totalFailed
     };
+
+    exec('npx cypress run', (error, stdout, stderr) => {
+        if (error) {
+          console.error(`exec error: ${error}`);
+          //return res.status(500).json({ error: error.message });
+          toReturn.status = 500;
+            toReturn.statusError = err.message;
+            return toReturn;
+        }
+    
+        res.json({ stdout, stderr });
+      });
 
     try {
         const results = await cypress.run({
