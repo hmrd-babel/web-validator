@@ -5,6 +5,8 @@ const { getAxeCorePath } = require('./path-helper');
 
 Cypress.Commands.add('injectAxe', () => {
   const axeCorePath = getAxeCorePath();
+  
+  console.log("callig injext Axe now");
 
   cy.readFile('node_modules/axe-core/axe.min.js', { timeout: 10000 }).then((axeCoreJs) => {
     cy.window().then((win) => {
