@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "postinstall": "cypress install",
+    "postinstall": "npx cypress install --cache-folder ./cypress_cache",
     "start": "node server.js",
     "test": "npx cypress run"
   },
