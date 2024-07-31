@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "postinstall": "cypress install",
     "start": "node server.js",
-     "postinstall": "npx cypress install --cache-folder ./cypress_cache",
-    "test": "cypress run"
+    "test": "npx cypress run"
   },
   "keywords": [],
   "author": "",
