@@ -53,8 +53,8 @@ async function runCypressTest(url) {
 
         toReturn.violations = JSON.parse(finalString);
         
-        for (i=1; i<= toReturn.violations.length; i++){
-            toReturn.violations[i-1].number = i;
+        for (i=0; i< toReturn.violations.length; i++){
+            toReturn.violations[i].impactNumber =  toReturn.violations[i].impact == 'critical' ? 0 : toReturn.violations[i].impact == 'serious' ? 1 : toReturn.violations[i].impact == 'moderate' ? 2 : 3 ;
         }
 
         return toReturn;

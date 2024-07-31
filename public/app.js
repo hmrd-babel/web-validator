@@ -73,7 +73,7 @@ jQuery(function() {
                 const results = await response.json();
                 spinner.hide();
                 displayTotals(results);
-                displayResults(results.violations);
+                displayResults(results.violations.sort(({impactNumber:a}, {impactNumber:b}) => a-b));
             }, 2000); 
         });
 
