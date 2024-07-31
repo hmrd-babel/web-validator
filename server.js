@@ -34,9 +34,9 @@ async function runCypressTest(url) {
         status: 200,
         statusError: "",
         violations: [],
-        totalRan: results.totalTests,
-        totalPassed: results.totalPassed,
-        totalFailed: results.totalFailed
+        totalRan: 0,
+        totalPassed: 0,
+        totalFailed: 0
     };
 
     exec('npx cypress run', (error, stdout, stderr) => {
@@ -61,6 +61,11 @@ async function runCypressTest(url) {
             spec: './cypress/e2e/accessibility.spec.cy.js',
         });
 
+
+        toReturn.totalRan = results.totalTests;
+        toReturn.totalPassed = results.totalPassed;
+        toReturn.totalFailed = results.totalFailed;
+        
         if (results.totalFailed > 0) {
             var errorsString = results.runs[0].tests[0].displayError;
             var index = errorsString.lastIndexOf(']');
