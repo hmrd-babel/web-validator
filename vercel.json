@@ -1,14 +1,5 @@
 {
   "version": 2,
-  "build": {
-    "env": {
-      "CI": "1"
-    },
-    "commands": {
-      "build": "npm run build"
-    },
-    "postbuild": "npx cypress install"
-  },
   "builds": [
     {
       "src": "server.js",
