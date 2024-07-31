@@ -1,10 +1,7 @@
 describe('Accessibility Validator', () => {
     beforeEach(() => {
-
         cy.visit(Cypress.env('URL_TO_TEST'));
-        cy.task('log', "Injecting Axe");
         cy.injectAxe();
-        cy.task('log', "Axe injected now");
       });
 
     it('Validate accessibility', () => {
