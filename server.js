@@ -39,6 +39,7 @@ async function runCypressTest(url) {
             },
         },
         spec: './cypress/e2e/accessibility.spec.cy.js',
+    });
 
     var toReturn = {
         violations : [],
