@@ -27,7 +27,7 @@ app.listen(port, () => {
     const filePath = process.env.FILE_PATH || './node_modules/axe-core/axe.min.js';
     
     console.log(`Server running at http://localhost:${port}`);
-    console.log(`Getting path: ${path}`);
+    console.log(`Getting path: ${filePath}`);
 });
 
 async function runCypressTest(url) {
