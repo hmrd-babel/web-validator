@@ -23,7 +23,11 @@ app.post('/check', async (req, res) => {
 });
 
 app.listen(port, () => {
+    const path = require('path');
+    const filePath = process.env.FILE_PATH || './node_modules/axe-core/axe.min.js';
+    
     console.log(`Server running at http://localhost:${port}`);
+    console.log(`Getting path: ${path}`);
 });
 
 async function runCypressTest(url) {
@@ -35,7 +39,6 @@ async function runCypressTest(url) {
             },
         },
         spec: './cypress/e2e/accessibility.spec.cy.js',
-    });
 
     var toReturn = {
         violations : [],
