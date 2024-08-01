@@ -13,4 +13,4 @@ git reset --hard origin/main
 npm install cypress
 
 # Restart the Node.js application with PM2
-pm2 restart server.js --env production
+pm2 restart ecosystem.config.js --env production
