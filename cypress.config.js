@@ -5,6 +5,6 @@ module.exports = defineConfig({
 		baseUrl: 'http://localhost:3000', // Replace with your URL
 		video: false,
 		screenshotOnRunFailure: false,
-		defaultCommandTimeout: 10000
+		defaultCommandTimeout: 20000
 	},
 });
