@@ -68,16 +68,17 @@ jQuery(function() {
                     },
                     body: JSON.stringify({ url }),
                 });
-            
+                
+                spinner.hide();
+
                 const results = await response.json();
                 if (results.error != 200){
-                    $("#errorMsg").val(results.errorMessage);
+                    $("#errorMsg").html(results.errorMessage);
                     $("#serverErrors").show();
                     
                     return;
                 }
 
-                spinner.hide();
                 displayTotals(results);
                 displayResults(results.violations.sort(({impactNumber:a}, {impactNumber:b}) => a-b));
             }, 2000); 
