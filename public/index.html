@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" role="document">
 
 <head>
     <meta charset="UTF-8">
@@ -14,59 +14,65 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <h1 class="brand-logo">Accessibility <span>Validator</span></h1>
+        <h1 class="header__logo">Accessibility <span class="header__logo--highlight">Validator</span></h1>
     </header>
 
     <!-- Main Content -->
-    <div class="container">
-        <div class="form-container">
+    <main class="container">
+        <section class="form-section">
             <form id="urlForm">
-                <input type="text" class="form-field" id="url" name="url" placeholder="Enter url to search" required>
+                <input type="text" class="form__input" id="url" name="url" placeholder="Enter url to search" role="searchbox" required>
                 <button type="submit" class="btn">Validate</button>
             </form>
-        </div>
+        </section>
 
-        <!-- Loading -->
+        <!-- Loading Spinner -->
         <div class="spinner">
-            <div class="loading"></div>
+            <div class="spinner__animation"></div>
         </div>
-        
 
-        <div id="totalResults" style="display:none;" class="mt-4">
-            <div class="violation summary">
-                <div class="total total-tests-content">
-                    <div><div class="separator"></div></div>
-                    <div><div>Tests</div><div id="totalTests" class="total-count total-tests"></div></div>
+        <!-- Results Summary -->
+        <section id="totalResults" class="summary--hidden">
+            <div class="results summary">
+                <div class="summary__item summary__item--tests">
+                    <div class="summary__label"> 
+                        <div>Tests</div>
+                        <div id="totalTests" class="summary__value"></div> 
+                    </div>
                 </div>
-                <div class="total total-passed-content">
-                    <div><div class="separator"></div></div>
-                    <div><div>Passed</div><div id="totalPassed" class="total-count total-passed"></div></div>
+                <div class="summary__item summary__item--passed"> 
+                    <div class="summary__label">
+                        <div>Passed</div>
+                        <div id="totalPassed" class="summary__value"></div>
+                    </div>
                 </div>
-                <div class="total total-failed-content">
-                    <div><div class="separator"></div></div>
-                    <div><div>Failed</div><div id="totalFailed" class="total-count total-failed"></div></div>
+                <div class="summary__item summary__item--failed"> 
+                    <div class="summary__label">
+                        <div>Failed</div>
+                        <div id="totalFailed" class="summary__value"></div>
+                    </div>
                 </div>
-                <div class="total total-violations-content">
-                    <div><div class="separator"></div></div>
-                    <div><div>Issues</div><div id="totalViolations" class="total-count total-violations"></div></div>
+                <div class="summary__item summary__item--violations"> 
+                    <div class="summary__label">
+                        <div>Issues</div>
+                        <div id="totalViolations" class="summary__value"></div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!--Card to be filled in with the violations -->
-        <div id="violations" class="mt-4 accordion">
-        </div>
+        <!-- Violations Section -->
+        <section id="violations" class="accordion"></section>
 
-        <!--Template for violations cards -->
-        <div id="violationTemplate" style="display:none;" type="text/x-jquery-tmpl">
-            <div class="violation card">
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <div class="criticality criticality-${impact}"></div>
+        <div id="violationTemplate" class="card--hidden" type="text/x-jquery-tmpl">
+            <div class="results card">
+                <div class="accordion__item">
+                    <button class="accordion__header">
+                        <div class="criticality criticality--${impact}"></div>
                         <div>${help}</div>
-                        <div class="criticality-issues criticality-${impact}">${nodes.length} element(s) found</div>
+                        <div class="criticality__label criticality--${impact}">${nodes.length} element(s) found</div>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion__content">
                         <div class="issue-description ${impact}"><a href="${helpUrl}" target="_blank">${description}.</a></div>
                         <div>
                             <div class="table">
@@ -82,19 +88,11 @@
             </div>
         </div>
 
-        <!--Card for when there are no violations -->
-        <div id="noErrors" style="display:none;" class="mt-4">
-            <div class="card-panel no-errors">No accessibility issues found.</div>
+        <!-- No Errors Card -->
+        <div id="noErrors" class="card card--hidden">
+            <div class="card--no-errors">No accessibility issues found.</div>
         </div>
-
-        <!--Card for when there are other errors  -->
-        <div id="serverErrors" style="display:none;" class="mt-4">
-            <div class="card-panel">An issue with the server was found, please try again later. 
-                <div id="errorMsg"></div>
-            </div>
-            
-        </div>
-    </div>
+    </main>
 
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

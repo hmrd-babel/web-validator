@@ -20,15 +20,13 @@ jQuery(function() {
     }
     
     function initaccordion(){
-        $(".accordion-header").on("click", function() {
-            var content = $(this).next(".accordion-content");
+        $(".accordion__header").on("click", function() {
+            var content = $(this).next(".accordion__content");
     
-            // Toggle the display of the content
             if (content.is(":visible")) {
                 content.slideUp();
             } else {
-                // Close all other open contents
-                $(".accordion-content").slideUp();
+                $(".accordion__content").slideUp();
                 content.slideDown();
             }
         });
