@@ -247,6 +247,20 @@ input[type=text].form__input:not(.browser-default):focus:not([readonly]) {
     margin: .5rem 0 1rem 0;
     border-radius: 2px;
 }
+.card--errors {
+    background-color: #9f1b1e;
+    color: #fff;
+    font-size: 18px;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    padding: 24px;
+    margin: .5rem 0 1rem 0;
+    border-radius: 2px;
+}
+.card--errors .server--error {
+    color: #a5a5a5;
+    margin-top: 10px;
+    font-size: 16px;
+}
 .spinner {
     display: none;
     position: absolute;
