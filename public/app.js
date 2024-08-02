@@ -7,6 +7,7 @@ jQuery(function() {
         $("#violations").hide();
         $("#violations").html('');
         $("#noErrors").hide();
+        $("#serverErrors").hide();
         $("#violationTemplate").hide();
     }
 
@@ -71,6 +72,12 @@ jQuery(function() {
                 });
             
                 const results = await response.json();
+                if (results.error != 200){
+                    $("#errorMsg").value();
+                    $("#serverErrors").show();
+                    return;
+                }
+
                 spinner.hide();
                 displayTotals(results);
                 displayResults(results.violations.sort(({impactNumber:a}, {impactNumber:b}) => a-b));

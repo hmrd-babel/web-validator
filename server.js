@@ -18,7 +18,7 @@ app.post('/check', async (req, res) => {
         const results = await runCypressTest(url);
         res.json(results);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: 500, errorMessage: error.message });
     }
 });
 
@@ -42,6 +42,7 @@ async function runCypressTest(url) {
     });
 
     var toReturn = {
+        error: 200,
         violations : [],
         totalRan : results.totalTests,
         totalPassed : results.totalPassed,
