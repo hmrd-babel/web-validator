@@ -73,8 +73,9 @@ jQuery(function() {
             
                 const results = await response.json();
                 if (results.error != 200){
-                    $("#errorMsg").value();
+                    $("#errorMsg").val();
                     $("#serverErrors").show();
+                    
                     return;
                 }
 
